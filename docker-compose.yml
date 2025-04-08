@@ -1,0 +1,21 @@
+services:
+  app:
+    container_name: devcontainer
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        - BUILDKIT_INLINE_CACHE=0
+    env_file: .env
+
+    # volumes:
+    #   - ..:/${localWorkspaceFolder}:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
