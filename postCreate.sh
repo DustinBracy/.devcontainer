@@ -23,6 +23,7 @@ echo "if [ -z \"$SSH_AUTH_SOCK\" ]; then \
    eval `cat $HOME/.ssh/ssh-agent` > /dev/null \
 ssh-add $HOME/.ssh/id_ed25519 2> /dev/null \
 fi" >> .zshrc
+echo "alias dc='docker compose'" >> .zshrc
 
 
 #install sqlc
