@@ -58,7 +58,8 @@
         "wmaurer.change-case",
         "quicktype.quicktype",
         "redhat.vscode-yaml",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   }
