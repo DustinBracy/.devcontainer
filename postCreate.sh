@@ -3,6 +3,17 @@ python -m pip install --upgrade pip
 git config --location=global user.email $GIT_EMAIL
 git config --location=global user.name $GIT_USER
 
+cat <<EOT >> ~/.bashrc
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+EOT
+source ~/.bashrc
+mkdir -p ~/.local/share/bash-completion/completions
+docker completion bash > ~/.local/share/bash-completion/completions/docker
+echo "alias dc='docker compose'" >> .bashrc
+echo "alias dc='docker compose'" >> .zshrc
+
 # add git autocomplete: https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
 mkdir -p ~/.zsh
 cd ~/.zsh
@@ -12,6 +23,11 @@ echo "zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash" >> .zshr
 echo "fpath=(~/.zsh $fpath)" >> .zshrc
 echo "autoload -Uz compinit && compinit" >> .zshrc
 echo "eval \"$(ssh-agent -s)\" > /dev/null" >> .zshrc
+ 
+# add docker completion
+mkdir -p ~/.oh-my-zsh/completions
+docker completion zsh > ~/.oh-my-zsh/completions/_docker
+
 
 echo "if [ -z \"$SSH_AUTH_SOCK\" ]; then \
    # Check for a currently running instance of the agent \
@@ -22,12 +38,11 @@ echo "if [ -z \"$SSH_AUTH_SOCK\" ]; then \
    fi \
    eval `cat $HOME/.ssh/ssh-agent` > /dev/null \
 ssh-add $HOME/.ssh/id_ed25519 2> /dev/null \
-fi" >> .zshrc
-echo "alias dc='docker compose'" >> .zshrc
+fi" >> .bashrc
+echo "alias dc='docker compose'" >> .bashrc
 
+source ~/.bashrc
 
-#install sqlc
-go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 
 
 # #install go
