@@ -14,3 +14,6 @@ docker completion bash > ~/.local/share/bash-completion/completions/docker
 echo "alias dc='docker compose'" >> ~/.bashrc
 
 source ~/.bashrc
+npm install -g npm@latest
+
+go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
