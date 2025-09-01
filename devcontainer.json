@@ -43,24 +43,25 @@
 
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-python.pylint",
-        "ms-toolsai.jupyter",
-        "eamodio.gitlens",
-        "GrapeCity.gc-excelviewer",
+        "bradlc.vscode-tailwindcss",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "vscodeshift.mui-snippets",
         "dsznajder.es7-react-js-snippets",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot",
+        "golang.go",
+        "GrapeCity.gc-excelviewer",
         "Gruntfuggly.todo-tree",
         "mechatroner.rainbow-csv",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
         "naumovs.color-highlight",
-        "wmaurer.change-case",
         "quicktype.quicktype",
         "redhat.vscode-yaml",
-        "GitHub.copilot",
-        "bradlc.vscode-tailwindcss"
+        "vscodeshift.mui-snippets",
+        "wmaurer.change-case"
       ]
     }
   }
