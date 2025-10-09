@@ -14,6 +14,7 @@
     "ghcr.io/devcontainers/features/python:1": {},
     "ghcr.io/devcontainers/features/rust:1": {},
     "ghcr.io/devcontainers-extra/features/protoc:1": {}
+    // "ghcr.io/mrsimonemms/devcontainers/buf:1": {}
   },
   "mounts": [
     "source=${localWorkspaceFolder},target=/${localWorkspaceFolder},type=bind,consistency=cached",
@@ -62,7 +63,8 @@
         "quicktype.quicktype",
         "redhat.vscode-yaml",
         "vscodeshift.mui-snippets",
-        "wmaurer.change-case"
+        "wmaurer.change-case",
+        "tooltitudeteam.tooltitude-pb"
       ]
     }
   }

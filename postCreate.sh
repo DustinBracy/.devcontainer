@@ -14,6 +14,8 @@ docker completion bash > ~/.local/share/bash-completion/completions/docker
 echo "alias dc='docker compose'" >> ~/.bashrc
 
 source ~/.bashrc
-npm install -g npm@latest
-
+npm install -g npm@latest google-protobuf protoc-gen-grpc-web @connectrpc/connect @connectrpc/connect-web @bufbuild/protobuf @bufbuild/protoc-gen-es
 go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
+go install github.com/bufbuild/buf/cmd/buf@latest
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
