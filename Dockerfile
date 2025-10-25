@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3.13-bookworm
+FROM mcr.microsoft.com/devcontainers/typescript-node:24-bookworm
 
 ENV PYTHONUNBUFFERED 1
 
@@ -9,11 +9,8 @@ ENV PYTHONUNBUFFERED 1
 
 # Add Stripe CLI’s GPG key to the apt sources keyring + Add CLI’s apt repository to the apt sources list:
 RUN curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg \
-    && echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list
-
-
-# [Optional] Uncomment this section to install additional OS packages.
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list \
+    && apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends stripe watchman g++ unixodbc-dev unixodbc libpq-dev vim iputils-ping bash-completion && rm -rf /var/lib/apt/lists/*
 
 # [Optional] Uncomment this line to install global node packages.
