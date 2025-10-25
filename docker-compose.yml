@@ -1,20 +1,20 @@
 services:
-  app:
-    container_name: devcontainer
+  devcontainer:
+    container_name: BracyTech-DC
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
       args:
         - BUILDKIT_INLINE_CACHE=0
-    env_file: .env
-
+    env_file:
+      - .env
+    networks:
+      - traefik
     # volumes:
     #   - ..:/${localWorkspaceFolder}:cached
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-    networks:
-      - traefik
 
 networks:
   traefik:

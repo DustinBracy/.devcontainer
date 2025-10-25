@@ -1,47 +1,48 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "dev_${localEnv:USER}",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  //"dockerComposeFile": "docker-compose.yml",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
+  "name": "BracyTech",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
   "workspaceFolder": "/${localWorkspaceFolder}",
+  // "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
+  // "runArgs": ["--network=traefik", "--name=devcontainer"],
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
     "ghcr.io/devcontainers/features/go:1": {},
     "ghcr.io/devcontainers/features/python:1": {},
-    "ghcr.io/devcontainers/features/rust:1": {},
-    "ghcr.io/devcontainers-extra/features/protoc:1": {},
-    "ghcr.io/mrsimonemms/devcontainers/buf:1": {}
+    "ghcr.io/devcontainers/features/rust:1": {}
   },
   "mounts": [
     "source=${localWorkspaceFolder},target=/${localWorkspaceFolder},type=bind,consistency=cached",
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
     // "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached"
   ],
+  "postCreateCommand": "./.devcontainer/postCreate.sh",
 
-  "runArgs": ["--network=traefik", "--name=devcontainer"],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "./.devcontainer/postCreate.sh",
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
       // Set *default* container specific settings.json values on container create.
       "settings": {
+        "jupyter.notebookFileRoot": "${workspaceFolder}/api",
+        "python.analysis.extraPaths": ["${workspaceFolder}/api/"],
         "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": true,
         "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
         "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
         "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
         "python.testing.pytestPath": "/usr/local/py-utils/bin/pytest",
-        "python.analysis.extraPaths": ["${workspaceFolder}/api/"],
-        "jupyter.notebookFileRoot": "${workspaceFolder}/api"
+        "typescript.preferences.autoImportSpecifierExcludeRegexes": [
+          "^@mui/[^/]+$"
+        ]
       },
 
       // Add the IDs of extensions you want installed when the container is created.
@@ -53,6 +54,7 @@
         "esbenp.prettier-vscode",
         "GitHub.copilot",
         "golang.go",
+        "Grafana.grafana-alloy",
         "GrapeCity.gc-excelviewer",
         "Gruntfuggly.todo-tree",
         "mechatroner.rainbow-csv",
@@ -63,13 +65,12 @@
         "naumovs.color-highlight",
         "quicktype.quicktype",
         "redhat.vscode-yaml",
-        "vscodeshift.mui-snippets",
-        "wmaurer.change-case",
         "tooltitudeteam.tooltitude-pb",
-        "Grafana.grafana-alloy"
+        "vscodeshift.mui-snippets",
+        "wmaurer.change-case"
       ]
     }
-  }
+  },
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  //"remoteUser": "adm1n"
+  "remoteUser": "node"
 }
