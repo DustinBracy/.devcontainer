@@ -5,13 +5,15 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
   "workspaceFolder": "/${localWorkspaceFolder}",
-  // "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
+  // "image": "mcr.microsoft.com/devcontainers/typescript-node:26-trixie",
   // "runArgs": ["--network=traefik", "--name=devcontainer"],
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-    "ghcr.io/devcontainers/features/go:1": {},
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.27.3"
+    },
     "ghcr.io/devcontainers/features/python:1": {},
     "ghcr.io/devcontainers/features/rust:1": {}
   },
