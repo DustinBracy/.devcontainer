@@ -10,7 +10,9 @@
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false
+    },
     "ghcr.io/devcontainers/features/go:1": {
       "version": "1.27"
     },
@@ -21,7 +23,9 @@
   },
   "mounts": [
     "source=${localWorkspaceFolder},target=/${localWorkspaceFolder},type=bind,consistency=cached",
-    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached",
+    "source=claude-code-config,target=/home/node/.claude,type=volume"
+
     // "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached"
   ],
   "postCreateCommand": "./.devcontainer/postCreate.sh",
@@ -71,7 +75,9 @@
         "redhat.vscode-yaml",
         "tooltitudeteam.tooltitude-pb",
         "vscodeshift.mui-snippets",
-        "wmaurer.change-case"
+        "wmaurer.change-case",
+        "Anthropic.claude-code",
+        "saoudrizwan.claude-dev"
       ]
     }
   },
